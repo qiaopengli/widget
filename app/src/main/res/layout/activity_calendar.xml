@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/goto_today"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="回到今日"/>
+
+    <com.maple.leaf.widget.calendar.WeekBarView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/week_bar_height"
+        android:background="@color/calendar_bg_color"
+        app:week_text_color="#ff0000ff"
+        app:week_text_size="@integer/calendar_text_size"/>
+
+    <com.maple.leaf.widget.calendar.schedule.ScheduleLayout
+        android:id="@+id/activity_calendar_schedule_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:auto_change_month_row="true"
+        app:content_layout="@id/activity_calendar_content_layout"
+        app:content_recycler_view="@id/activity_calendar_content_recycler_view"
+        app:default_view="month"
+        app:month_calendar="@id/activity_calendar_month_calendar"
+        app:month_layout="@id/activity_calendar_month_calendar_parent"
+        app:week_calendar="@id/activity_calendar_week_calendar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/activity_calendar_month_calendar_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.maple.leaf.widget.calendar.month.MonthCalendarView
+                        android:id="@+id/activity_calendar_month_calendar"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/month_calendar_height"
+                        android:background="@color/calendar_bg_color"
+                        android:overScrollMode="never"
+                        app:month_day_text_size="@integer/calendar_text_size"
+                        app:month_holiday_color="@color/holiday_text_color"
+                        app:month_selected_circle_color="@color/select_circle_color"
+                        app:month_show_holiday_hint="true"
+                        app:month_show_lunar="true"
+                        app:month_show_task_hint="true"/>
+                </RelativeLayout>
+
+                <com.maple.leaf.widget.calendar.week.WeekCalendarView
+                    android:id="@+id/activity_calendar_week_calendar"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/week_calendar_height"
+                    android:background="@color/calendar_bg_color"
+                    android:overScrollMode="never"
+                    android:visibility="gone"
+                    app:week_day_text_size="@integer/calendar_text_size"
+                    app:week_holiday_color="@color/holiday_text_color"
+                    app:week_selected_circle_color="@color/select_circle_color"
+                    app:week_show_holiday_hint="true"
+                    app:week_show_lunar="true"
+                    app:week_show_task_hint="true"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/activity_calendar_content_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorBackground">
+
+                <com.maple.leaf.widget.calendar.schedule.ScheduleRecyclerView
+                    android:id="@+id/activity_calendar_content_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:orientation="vertical"
+                    android:overScrollMode="never"
+                    android:paddingTop="6dp"/>
+
+                <RelativeLayout
+                    android:id="@+id/rlNoTask"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorBackground">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="暂无内容"/>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </com.maple.leaf.widget.calendar.schedule.ScheduleLayout>
+
+</LinearLayout>
